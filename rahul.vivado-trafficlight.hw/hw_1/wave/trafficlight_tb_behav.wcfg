@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="trafficlight_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="trafficlight_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="509,998 ps"></ZoomStartTime>
+      <ZoomEndTime time="510,001 ps"></ZoomEndTime>
+      <Cursor1Time time="510,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="100"></NameColumnWidth>
+      <ValueColumnWidth column_width="128"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="8" />
+   <wvobject type="logic" fp_name="/trafficlight_tb/CLOCK">
+      <obj_property name="ElementShortName">CLOCK</obj_property>
+      <obj_property name="ObjectShortName">CLOCK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/trafficlight_tb/CLEAR">
+      <obj_property name="ElementShortName">CLEAR</obj_property>
+      <obj_property name="ObjectShortName">CLEAR</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/trafficlight_tb/X">
+      <obj_property name="ElementShortName">X</obj_property>
+      <obj_property name="ObjectShortName">X</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/trafficlight_tb/HWY">
+      <obj_property name="ElementShortName">HWY[1:0]</obj_property>
+      <obj_property name="ObjectShortName">HWY[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/trafficlight_tb/ROAD">
+      <obj_property name="ElementShortName">ROAD[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ROAD[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/trafficlight_tb/hwy_light">
+      <obj_property name="ElementShortName">hwy_light[48:1]</obj_property>
+      <obj_property name="ObjectShortName">hwy_light[48:1]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/trafficlight_tb/road_light">
+      <obj_property name="ElementShortName">road_light[48:1]</obj_property>
+      <obj_property name="ObjectShortName">road_light[48:1]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/trafficlight_tb/state_name">
+      <obj_property name="ElementShortName">state_name[96:1]</obj_property>
+      <obj_property name="ObjectShortName">state_name[96:1]</obj_property>
+   </wvobject>
+</wave_config>

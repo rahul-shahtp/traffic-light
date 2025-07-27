@@ -1,0 +1,7 @@
+0.7
+2020.2
+May 21 2025
+22:59:56
+/home/thanda/Documents/vivado/rahul.vivado-trafficlight/rahul.vivado-trafficlight.sim/sim_1/behav/xsim/glbl.v,1741209010,verilog,,,,glbl,,,,,,,,
+/home/thanda/Documents/vivado/rahul.vivado-trafficlight/rahul.vivado-trafficlight.srcs/sim_1/new/trafficlight_tb.v,1753604923,verilog,,,,trafficlight_tb,,,../../../../../../vivadofiles/2025.1/data/rsb/busdef,,,,,
+/home/thanda/Documents/vivado/rahul.vivado-trafficlight/rahul.vivado-trafficlight.srcs/sources_1/new/trafficlight_controller.v,1753604886,verilog,,/home/thanda/Documents/vivado/rahul.vivado-trafficlight/rahul.vivado-trafficlight.srcs/sim_1/new/trafficlight_tb.v,,trafficlight_controller,,,../../../../../../vivadofiles/2025.1/data/rsb/busdef,,,,,

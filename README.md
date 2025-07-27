@@ -3,7 +3,8 @@ This Verilog code implements a traffic light controller using a finite state mac
 
      # States:
 
-        State	    Meaning	                                    hwy	           road
+        State	    Meaning	                                   hwy	             road
+        
         S0	      Highway green (default)	                   GREEN	          RED
         S1	      Highway yellow (car detected on road)	      YELLOW	          red
         S2	      All red (safety pause)	                    RED	               RED

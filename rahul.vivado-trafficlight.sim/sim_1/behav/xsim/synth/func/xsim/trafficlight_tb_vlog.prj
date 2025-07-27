@@ -1,0 +1,7 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  --include "../../../../../../../vivadofiles/2025.1/data/rsb/busdef" \
+"trafficlight_tb_func_synth.v" \
+"../../../../../rahul.vivado-trafficlight.srcs/sim_1/new/trafficlight_tb.v" \
+
+# Do not sort compile order
+nosort

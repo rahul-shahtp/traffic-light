@@ -1,15 +1,7 @@
 # traffic-light
 This Verilog code implements a traffic light controller using a finite state machine (FSM). It manages traffic lights at a two-way intersection: one direction is a highway (hyv) and the other is a side road (road). This is a basic traffic light controller that prioritizes the highway and allows road traffic only when needed.
 
-     # States:
-
-        State	    Meaning	                                   hwy	             road
-        
-        S0	      Highway green (default)	                   GREEN	          RED
-        S1	      Highway yellow (car detected on road)	      YELLOW	          red
-        S2	      All red (safety pause)	                    RED	               RED
-        S3	      Road green	                                RED	             green
-        S4	      Road yellow	                                RED	             yellow
+     
 
 
        # Behavior Summary:

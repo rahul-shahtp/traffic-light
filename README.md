@@ -1,20 +1,41 @@
-# traffic-light
-This Verilog code implements a traffic light controller using a finite state machine (FSM). It manages traffic lights at a two-way intersection: one direction is a highway and the other is a side road. This is a basic traffic light controller that prioritizes the highway and allows road traffic only when needed.
-linkdln : www.linkedin.com/in/rahul-shah-510a05321
+<h1 align="center">🚦 Traffic Light Controller</h1>
 
-     
+<p align="left">
+This Verilog code implements a <b>traffic light controller</b> using a
+<b>Finite State Machine (FSM)</b>.  
+It manages traffic lights at a <b>two-way intersection</b> where:
+<ul>
+  <li>One direction is a <b>highway</b> (priority road)</li>
+  <li>The other direction is a <b>side road</b></li>
+</ul>
+The controller prioritizes highway traffic and allows road traffic only
+when a vehicle is detected.
+</p>
 
+<h3 align="left">🔗 Connect with me</h3>
+<p align="left">
+  <a href="https://www.linkedin.com/in/rahul-shah-510a05321" target="_blank">
+    💼 LinkedIn Profile
+  </a>
+</p>
 
-       # Behavior Summary:
- 
-            Start at S0 (highway green).
+<h3 align="left">⚙️ Behavior Summary</h3>
 
-            If a car is detected on the road (x=1), go to S1 (yellow highway).
+<p align="left">
+<b>S0:</b> Highway GREEN (Initial State)<br><br>
 
-            After 3 clock cycles, go to S2 (red-red safety).
+➡️ If a car is detected on the road (<b>x = 1</b>):<br>
+&nbsp;&nbsp;→ Move to <b>S1</b> (Highway YELLOW)<br><br>
 
-            After 2 clock cycles, go to S3 (road green).
+⏱️ After <b>3 clock cycles</b>:<br>
+&nbsp;&nbsp;→ Move to <b>S2</b> (RED–RED safety state)<br><br>
 
-            If no car on road (x=0), go to S4 (road yellow).
+⏱️ After <b>2 clock cycles</b>:<br>
+&nbsp;&nbsp;→ Move to <b>S3</b> (Road GREEN)<br><br>
 
-           After 3 clock cycles, return to S0 (highway green).
+➡️ If no car is detected on the road (<b>x = 0</b>):<br>
+&nbsp;&nbsp;→ Move to <b>S4</b> (Road YELLOW)<br><br>
+
+⏱️ After <b>3 clock cycles</b>:<br>
+&nbsp;&nbsp;→ Return to <b>S0</b> (Highway GREEN)
+</p>

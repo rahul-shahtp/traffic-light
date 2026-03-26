@@ -3,12 +3,10 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07/27/2025 01:56:09 PM
-// Design Name: 
+// Create Date: 07/25/2025 11:19:17 AM
+// Design Name: testbench
 // Module Name: trafficlight_tb
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name: traffic light controller
 // Description: 
 // 
 // Dependencies: 

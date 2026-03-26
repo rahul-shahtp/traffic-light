@@ -1,14 +1,16 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
+Company: 
 // Engineer: 
 // 
-// Create Date: 07/27/2025 01:55:27 PM
-// Design Name: 
+// Create Date: 07/25/2025 11:18:46 AM
 // Module Name: trafficlight_controller
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name: traffic light controller
+// Product family: Spartan-7
+// Project part: xc7s50fgga484-1Q
+// Target language: Verilog
+// Simulator language: Mixed
+// Target Simulator: Vivado Simulator
 // Description: 
 // 
 // Dependencies: 

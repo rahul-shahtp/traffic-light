@@ -25,8 +25,8 @@ module trafficlight_tb();
     wire [1:0] HWY;   
     wire [1:0] ROAD;  
 
-    reg [8*6:1] hwy_light, road_light;//declare a register of 6 byte
-    reg [8*12:1] state_name; // declare a register of 12 byte
+    reg [8*6:1] hwy_light, road_light;
+    reg [8*11:1] state_name; 
     
     always @(*) begin
         case (uut.state)
@@ -62,16 +62,12 @@ module trafficlight_tb();
         .road(ROAD)
     );
 
-   always begin
-        CLOCK = 0;
-        #5;
-        CLOCK = 1;
-        #5;
-    end
+   initial CLOCK = 0;
+   always #5 CLOCK = ~CLOCK;
 
     // Test stimulation
     initial begin
-        
+
         $dumpfile("dump.vcd");
         $dumpvars(0, trafficlight_tb);
 

@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-Company: 
+// Company: 
 // Engineer: 
 // 
 // Create Date: 07/25/2025 11:18:46 AM
@@ -41,7 +41,7 @@ module trafficlight_controller (
                      S4 = 4;  // Highway red, Road yellow
     
     reg [2:0] state;
-    reg [1:0] delay;
+    reg [2:0] delay;
 
     always @(posedge clock) begin
         if (clear) begin

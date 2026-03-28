@@ -71,6 +71,10 @@ module trafficlight_tb();
 
     // Test stimulation
     initial begin
+        
+        $dumpfile("dump.vcd");
+        $dumpvars(0, trafficlight_tb);
+
         // Test 1: Reset - Should go to HWY_GREEN
         $display("\nTest 1: Reset condition");
         CLEAR = 1;

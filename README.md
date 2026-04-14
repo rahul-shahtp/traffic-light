@@ -1,41 +1,104 @@
-<h1 align="center">🚦 Traffic Light Controller</h1>
+# 🚦 Highway-Road Traffic Light Controller
 
-<p align="left">
-This Verilog code implements a <b>traffic light controller</b> using a
-<b>Finite State Machine (FSM)</b>.  
-It manages traffic lights at a <b>two-way intersection</b> where:
-<ul>
-  <li>One direction is a <b>highway</b> (priority road)</li>
-  <li>The other direction is a <b>side road</b></li>
-</ul>
-The controller prioritizes highway traffic and allows road traffic only
-when a vehicle is detected.
-</p>
+A Verilog RTL implementation of a sensor-based traffic light controller for a highway–road intersection, designed and simulated on Xilinx Spartan-7 using Vivado Simulator.
 
-<h3 align="left">🔗 Connect with me</h3>
-<p align="left">
-  <a href="https://www.linkedin.com/in/rahul-shah-510a05321" target="_blank">
-    💼 LinkedIn Profile
-  </a>
-</p>
+---
 
-<h3 align="left">⚙️ Behavior Summary</h3>
+## Overview
 
-<p align="left">
-<b>S0:</b> Highway GREEN (Initial State)<br><br>
+The controller manages two traffic signals — a **highway** (main road, always-green by default) and a **road** (side road, gets green only when a car is detected). A single-bit sensor input `x` drives state transitions.
 
-➡️ If a car is detected on the road (<b>x = 1</b>):<br>
-&nbsp;&nbsp;→ Move to <b>S1</b> (Highway YELLOW)<br><br>
+---
 
-⏱️ After <b>3 clock cycles</b>:<br>
-&nbsp;&nbsp;→ Move to <b>S2</b> (RED–RED safety state)<br><br>
+## Block Diagram
 
-⏱️ After <b>2 clock cycles</b>:<br>
-&nbsp;&nbsp;→ Move to <b>S3</b> (Road GREEN)<br><br>
+```
+        ┌──────────────────────────────┐
+        │   trafficlight_controller    │
+  ──────┤ clock                    hwy ├──── [1:0] Highway Signal
+  ──────┤ clear                   road ├──── [1:0] Road Signal
+  ──────┤ x (car sensor)               │
+        └──────────────────────────────┘
+```
 
-➡️ If no car is detected on the road (<b>x = 0</b>):<br>
-&nbsp;&nbsp;→ Move to <b>S4</b> (Road YELLOW)<br><br>
+---
 
-⏱️ After <b>3 clock cycles</b>:<br>
-&nbsp;&nbsp;→ Return to <b>S0</b> (Highway GREEN)
-</p>
+## FSM — State Diagram
+
+```
+        ┌──── x=0 (no car) ────┐
+        ▼                      │
+      [ S0 ]  ── x=1 ──▶  [ S1 ]  ── 3 cycles ──────▶ [ S2 ]
+   HWY=GREEN               HWY=YELLOW                ALL RED
+   ROAD=RED                ROAD=RED                  (2 cycles)
+        ▲                                                │
+        │                                                ▼
+      [ S4 ]  ◀── x=0 ──  [ S3 ]  ◀─────────────────────
+   HWY=RED                HWY=RED
+   ROAD=YELLOW            ROAD=GREEN
+   (3 cycles)
+```
+
+---
+
+## State Table
+
+| State | Highway | Road   | Condition to Leave              |
+|-------|---------|--------|---------------------------------|
+| S0    | 🟢 Green  | 🔴 Red   | Car detected (`x=1`) → S1       |
+| S1    | 🟡 Yellow | 🔴 Red   | 3-cycle delay → S2              |
+| S2    | 🔴 Red    | 🔴 Red   | 2-cycle safety delay → S3       |
+| S3    | 🔴 Red    | 🟢 Green | Car gone (`x=0`) → S4           |
+| S4    | 🔴 Red    | 🟡 Yellow | 3-cycle delay → S0             |
+
+---
+
+## Signal Encoding
+
+| Signal | Code   |
+|--------|--------|
+| RED    | `2'b00` |
+| GREEN  | `2'b01` |
+| YELLOW | `2'b10` |
+
+---
+
+---
+
+## Simulation
+
+### Tools
+- **Simulator:** Vivado Simulator (xsim)
+- **Target Device:** Spartan-7 `xc7s50fgga484-1Q`
+- **Timescale:** `1ns / 1ps`, clock period = `10ns`
+
+### Test Cases
+
+| # | Description | Stimulus |
+|---|-------------|----------|
+| 1 | Reset | `CLEAR=1`, `X=0` for 20 ns |
+| 2 | Highway idle | `CLEAR=0`, `X=0` for 40 ns |
+| 3 | Full state cycle | `X=1` for 150 ns |
+| 4 | Return to highway | `X=0` for 150 ns |
+| 5 | Quick car detection | `X=1` → `X=0` with short pulse |
+
+### Running via Icarus Verilog (alternative)
+
+```bash
+iverilog -o sim trafficlight_controller.v trafficlight_tb.v
+vvp sim
+# VCD waveform → dump.vcd
+gtkwave dump.vcd
+```
+
+---
+
+## Design Notes
+
+- **Two always blocks:** Sequential (state register, clocked) + Combinational (output logic).
+- **Safety state S2:** Both lights RED for 2 cycles to prevent simultaneous green — standard intersection safety practice.
+- **Sensor-driven:** Highway stays green indefinitely until `x=1`; road stays green as long as `x=1`.
+- **Synchronous reset:** `clear` signal returns to S0 on next rising clock edge.
+
+---
+
